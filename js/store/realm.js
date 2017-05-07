@@ -2,10 +2,10 @@ import Realm from 'realm'
 import { ListView } from 'realm/react-native'
 const uuid = require('uuid')
 
-class TodoItem {
-  static get () { return realm.objects(TodoItem.schema.name) }
+class ShoppingItem {
+  static get () { return realm.objects(ShoppingItem.schema.name) }
   static schema = {
-    name: 'TodoItem',
+    name: 'ShoppingItem',
     primaryKey: 'id',
     properties: {
       id: {type: 'string'},
@@ -18,17 +18,17 @@ class TodoItem {
 
 export const todoItemDS = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
 
-export const getTodoItems = () => {
-  const todoItems = TodoItem.get().sorted('createdTimestamp', true)
+export const getShoppingItems = () => {
+  const todoItems = ShoppingItem.get().sorted('createdTimestamp', true)
   return todoItems
 }
 
-export const getTodoItem = (id) => {
-  const todoItem = realm.objectForPrimaryKey(TodoItem, id)
+export const getShoppingItem = (id) => {
+  const todoItem = realm.objectForPrimaryKey(ShoppingItem, id)
   return todoItem
 }
 
-export const updateTodoItem = (todoItem, value, completed) => {
+export const updateShoppingItem = (todoItem, value, completed) => {
   realm.write(() => {
     try {
       todoItem.value = value
@@ -39,9 +39,9 @@ export const updateTodoItem = (todoItem, value, completed) => {
   })
 }
 
-export const createTodoItem = (value) => {
+export const createShoppingItem = (value) => {
   realm.write(() => {
-    realm.create(TodoItem.schema.name, {
+    realm.create(ShoppingItem.schema.name, {
       id: uuid.v1(),
       value,
       createdTimestamp: new Date()
@@ -49,10 +49,10 @@ export const createTodoItem = (value) => {
   })
 }
 
-export const deleteTodoItem = (todoItem) => {
+export const deleteShoppingItem = (todoItem) => {
   realm.write(() => {
     realm.delete(todoItem)
   })
 }
 
-const realm = new Realm({schema: [TodoItem]})
+const realm = new Realm({schema: [ShoppingItem]})
