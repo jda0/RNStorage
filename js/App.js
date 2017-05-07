@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Provider } from 'react-redux'
 import TodoItems from './TodoItems'
-import createReduxStore from './store/createReduxStore'
+import createReduxStore from './store/createStore'
 
 const reduxStore = createReduxStore()
 
