@@ -10,7 +10,7 @@ class ShoppingItem {
     properties: {
       id: {type: 'string'},
       value: {type: 'string'},
-      completed: {type: 'bool', default: false},
+      bought: {type: 'bool', default: false},
       createdTimestamp: {type: 'date'}
     }
   }
@@ -19,20 +19,20 @@ class ShoppingItem {
 export const todoItemDS = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
 
 export const getShoppingItems = () => {
-  const todoItems = ShoppingItem.get().sorted('createdTimestamp', true)
-  return todoItems
+  const shoppingItems = ShoppingItem.get().sorted('createdTimestamp', true)
+  return shoppingItems
 }
 
 export const getShoppingItem = (id) => {
-  const todoItem = realm.objectForPrimaryKey(ShoppingItem, id)
-  return todoItem
+  const shoppingItem = realm.objectForPrimaryKey(ShoppingItem, id)
+  return shoppingItem
 }
 
-export const updateShoppingItem = (todoItem, value, completed) => {
+export const updateShoppingItem = (shoppingItem, value, bought) => {
   realm.write(() => {
     try {
-      todoItem.value = value
-      todoItem.completed = completed
+      shoppingItem.value = value
+      shoppingItem.bought = bought
     } catch (e) {
       console.warn(e)
     }
@@ -49,9 +49,9 @@ export const createShoppingItem = (value) => {
   })
 }
 
-export const deleteShoppingItem = (todoItem) => {
+export const deleteShoppingItem = (shoppingItem) => {
   realm.write(() => {
-    realm.delete(todoItem)
+    realm.delete(shoppingItem)
   })
 }
 
