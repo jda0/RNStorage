@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {
   View,
   Text,
@@ -8,29 +8,29 @@ import {
 import { ListView } from 'realm/react-native'
 
 export default class App extends Component {
-  state = {textInput: ''}
+  state = { textInput: '' }
   _onSubmit (e) {
-    const {createShoppingItem} = this.props
+    const { createShoppingItem } = this.props
     if (e && e.nativeEvent.text.trim().length > 0) {
       createShoppingItem(e.nativeEvent.text.trim())
     }
-    this.setState({textInput: ''})
+    this.setState({ textInput: '' })
   }
   render () {
-    const {dataSource, deleteShoppingItem} = this.props
-    const {textInput} = this.state
+    const { dataSource, deleteShoppingItem } = this.props
+    const { textInput } = this.state
     return (
-      <View style={styles.container}>
+      <View style={ styles.container }>
         <TextInput
           autoFocus
-          blurOnSubmit={false}
-          style={styles.textInput}
-          onSubmitEditing={(e) => this._onSubmit(e)}
-          value={textInput}
-          onChange={(event) => this.setState({textInput: event.nativeEvent.text})} />
+          blurOnSubmit={ false }
+          style={ styles.textInput }
+          onSubmitEditing={ (e) => this._onSubmit(e) }
+          value={ textInput }
+          onChange={ (event) => this.setState({ textInput: event.nativeEvent.text }) } />
         <ListView
-          dataSource={dataSource}
-          renderRow={(shoppingItem) => <Text onPress={() => deleteShoppingItem(shoppingItem)}>{shoppingItem.value}</Text>}
+          dataSource={ dataSource }
+          renderRow={ (shoppingItem) => <Text onPress={() => deleteShoppingItem(shoppingItem)}>{ shoppingItem.value }</Text> }
         />
       </View>
     )
