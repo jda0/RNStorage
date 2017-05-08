@@ -16,7 +16,7 @@ class ShoppingItem {
   }
 }
 
-export const todoItemDS = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
+export const shoppingItemDS = new ListView.DataSource({rowHasChanged: (r1, r2) => r1.id !== r2.id})
 
 export const getShoppingItems = () => {
   const shoppingItems = ShoppingItem.get().sorted('createdTimestamp', true)

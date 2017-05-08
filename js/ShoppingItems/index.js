@@ -9,7 +9,7 @@ const shoppingItemsResults = store.getShoppingItems()
 
 const mapStateToProps = (state, props) => ({
   ...getShoppingItems(state),
-  dataSource: store.todoItemDS.cloneWithRows(shoppingItemsResults)
+  dataSource: store.shoppingItemDS.cloneWithRows(shoppingItemsResults)
 })
 
 const mapDispatchToProps = {
