@@ -1,15 +1,15 @@
 import store from '../store'
 
-export const createTodoItem = (todoText) => {
-  store.createTodoItem(todoText)
+export const createShoppingItem = (itemText) => {
+  store.createShoppingItem(itemText)
   return {
-    type: 'TODO_ITEM_ADDED'
+    type: 'SHOPPING_ITEM_ADDED'
   }
 }
 
-export const deleteTodoItem = (todoItem) => {
-  store.deleteTodoItem(todoItem)
+export const deleteShoppingItem = (shoppingItem) => {
+  store.deleteShoppingItem(shoppingItem)
   return {
-    type: 'TODO_ITEM_DELETED'
+    type: 'SHOPPING_ITEM_DELETED'
   }
 }
