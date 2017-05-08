@@ -1,19 +1,19 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import store from '../store'
 import * as actions from './actions'
-import TodoItems from './TodoItems'
-import {getTodoItems} from '../reducers'
+import ShoppingItems from './ShoppingItems'
+import { getShoppingItems } from '../reducers'
 
 // Realm.Results is auto-updating, therefore no need to re-fetch the data
-const todoItemsResults = store.getTodoItems()
+const shoppingItemsResults = store.getShoppingItems()
 
 const mapStateToProps = (state, props) => ({
-  ...getTodoItems(state),
-  dataSource: store.todoItemDS.cloneWithRows(todoItemsResults)
+  ...getShoppingItems(state),
+  dataSource: store.todoItemDS.cloneWithRows(shoppingItemsResults)
 })
 
 const mapDispatchToProps = {
   ...actions
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoItems)
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingItems)
