@@ -10,14 +10,14 @@ import { ListView } from 'realm/react-native'
 export default class App extends Component {
   state = {textInput: ''}
   _onSubmit (e) {
-    const {createTodoItem} = this.props
+    const {createShoppingItem} = this.props
     if (e && e.nativeEvent.text.trim().length > 0) {
-      createTodoItem(e.nativeEvent.text.trim())
+      createShoppingItem(e.nativeEvent.text.trim())
     }
     this.setState({textInput: ''})
   }
   render () {
-    const {dataSource, deleteTodoItem} = this.props
+    const {dataSource, deleteShoppingItem} = this.props
     const {textInput} = this.state
     return (
       <View style={styles.container}>
@@ -30,7 +30,7 @@ export default class App extends Component {
           onChange={(event) => this.setState({textInput: event.nativeEvent.text})} />
         <ListView
           dataSource={dataSource}
-          renderRow={(todoItem) => <Text onPress={() => deleteTodoItem(todoItem)}>{todoItem.value}</Text>}
+          renderRow={(shoppingItem) => <Text onPress={() => deleteShoppingItem(shoppingItem)}>{shoppingItem.value}</Text>}
         />
       </View>
     )
